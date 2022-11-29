@@ -30,6 +30,7 @@ public class Level_1 : MonoBehaviour
     {
         if (ob.gameObject.name == "Objective_1")
         {
+            Camera.main.GetComponent<CameraMovement>().ChangePerspective();
             Objective_2.SetActive(true);
         }
         if (ob.gameObject.name == "Objective_2")
