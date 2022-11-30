@@ -30,22 +30,12 @@ public class Level_1 : MonoBehaviour
     {
         if (ob.gameObject.name == "Objective_1")
         {
-            Camera.main.GetComponent<CameraMovement>().ChangePerspective();
+            GameManager.Instance.Main.GetComponent<CameraMovement>().ChangePerspective();
             Objective_2.SetActive(true);
         }
         if (ob.gameObject.name == "Objective_2")
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-     Application.Quit(); 
-#endif
+            GameManager.Instance.ToMainMenu();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
