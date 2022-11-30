@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         MainMenu.SetActive(true);
         SceneManager.UnloadSceneAsync("Level_1");
         Player.transform.position = Vector3.up;
-        Player.GetComponent<Rigidbody>().constraints = (RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY);
+        Player.GetComponent<Rigidbody>().constraints = (RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX);
     }
 
     void Update()
