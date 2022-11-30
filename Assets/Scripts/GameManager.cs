@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Camera Main;
     public GameObject Player;
     public GameObject MainMenu;
-
+    
+    //Singleton
     public static GameManager Instance;
-    public Camera Main;
-
+    
+    //Setup singleton
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    //Enable main menu and handle player soft reset
     public void ToMainMenu()
     {
         if(MainMenu.activeInHierarchy) return;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<Rigidbody>().constraints = (RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX);
     }
 
+    //Check if escape is pressed
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,13 +44,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Button connection to GUI
     public void MainMenuPlay()
     {
         SceneManager.LoadScene("Level_1", LoadSceneMode.Additive);
         MainMenu.SetActive(false);
         Player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
     }
-
+    
+    //Button connection to GUI
     public void MainMenuExit()
     {
 #if UNITY_EDITOR

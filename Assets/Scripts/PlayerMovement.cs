@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
     }
-
+    //Check for input movement controls WASD+Space
     void Update()
     {
         if (Input.GetKey(KeyCode.A))
@@ -31,9 +31,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision theCollision)
+    //Check for ground collision
+    void OnCollisionEnter(Collision col)
     {
-        if (theCollision.gameObject.name == "Ground")
+        if (col.gameObject.name == "Ground")
         {
             _grounded = true;
         }

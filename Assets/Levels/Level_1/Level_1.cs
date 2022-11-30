@@ -6,8 +6,11 @@ public class Level_1 : MonoBehaviour
 {
     public GameObject Objective_1;
     public GameObject Objective_2;
+    
+    //Singleton
     public static Level_1 Instance;
 
+    //Setup singleton
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,7 +22,6 @@ public class Level_1 : MonoBehaviour
             Instance = this;
         }
     }
-
 
     void Start()
     {
